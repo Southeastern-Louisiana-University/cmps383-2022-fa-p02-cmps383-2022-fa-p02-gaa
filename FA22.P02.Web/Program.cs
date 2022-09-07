@@ -8,6 +8,15 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.MapGet("/", () => "This is a GET");
+app.MapPost("/", () => "This is a POST");
+app.MapPut("/", () => "This is a PUT");
+app.MapDelete("/", () => "This is a DELETE");
+
+app.MapMethods("/options-or-head", new[] { "OPTIONS", "HEAD" },
+                          () => "This is an options or head request ");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
